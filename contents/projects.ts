@@ -7,7 +7,7 @@ export const projects: Project[] = [
         description: 'MERN task manager with JWT auth, roles, subtasks, file uploads, multi-user tasks, and dashboards.',
         technologies: ["React", "Tailwind CSS", "React Router", "Moment.js", "Node.js", "Express.js", "MongoDB", "Mongoose", "React Context", "JWT", "bcrypt", "Multer", "Recharts", "Vercel", "Render"],
         githubLink: 'https://github.com/NEELSAMEL23/Task_Manager',
-            demoLink: 'https://task-manager-dusky-nine.vercel.app/',
+        demoLink: 'https://task-manager-dusky-nine.vercel.app/',
        
         image: '/images/task-managment.avif'
     },
@@ -16,7 +16,7 @@ export const projects: Project[] = [
         description: 'Responsive portfolio using Next.js App Router, with contact API, animations, and modern reusable components.',
         technologies: ['Next.js', 'React', 'Framer Motion', 'Heroicons', 'React Icons', 'Nodemailer', 'Dotenv'],
         githubLink: 'https://github.com/NEELSAMEL23/Portfolio',
-     demoLink: 'https://portfolio-rdvb.vercel.app/',
+        demoLink: 'https://portfolio-rdvb.vercel.app/',
         image: '/images/portfolio.jpg'
 
     },
