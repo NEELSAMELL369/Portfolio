@@ -17,7 +17,7 @@ export default function Footer() {
           
           <div className="flex space-x-6">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/NEELSAMEL23"
               target="_blank"
               rel="noopener noreferrer"
               className="text-secondary hover:text-primary transition-colors"
@@ -26,7 +26,7 @@ export default function Footer() {
             </a>
  
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/neelsamel/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-secondary hover:text-primary transition-colors"
