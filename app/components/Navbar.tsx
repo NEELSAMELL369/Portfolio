@@ -27,9 +27,9 @@ export default function Navbar() {
           <Link href="/" className="text-xl font-bold text-primary">
             Portfolio&trade;
           </Link>
-          
+
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {menuItems.map((item) => (
               <Link 
                 key={item.href}
@@ -39,6 +39,18 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
+
+            {/* Resume Button */}
+            <a 
+              href="/resume.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors text-sm"
+            >
+              Resume
+            </a>
+
+            {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -96,10 +108,28 @@ export default function Navbar() {
                   </motion.div>
                 ))}
 
+                {/* Resume Link in Mobile */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: menuItems.length * 0.1 }}
+                >
+                  <a
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-2 text-sm bg-primary text-white rounded-md text-center mx-2 hover:bg-primary/90 transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Resume
+                  </a>
+                </motion.div>
+
+                {/* Theme Toggle */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (menuItems.length + 1) * 0.1 }}
                 >
                   <button
                     onClick={() => {
@@ -128,4 +158,4 @@ export default function Navbar() {
       </div>
     </nav>
   )
-} 
+}
