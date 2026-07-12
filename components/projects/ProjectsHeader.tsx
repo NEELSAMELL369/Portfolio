@@ -30,7 +30,7 @@ export default function ProjectsHeader() {
         transition={{ delay: 0.2 }}
         className="mt-3 text-sm text-gray-500 dark:text-gray-400 leading-6"
       >
-        A look at the full-stack applications I've built end to end, from
+        A look at the full-stack applications I&apos;ve built end to end, from
         database and API design to the interfaces on top.
       </motion.p>
     </div>

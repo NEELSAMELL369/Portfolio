@@ -20,7 +20,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <p className="text-lg font-medium mb-2">Hi, I'm</p>
+            <p className="text-lg font-medium mb-2">Hi, I&apos;m</p>
 
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
               Neel <span className="text-primary">Samel</span>

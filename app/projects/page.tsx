@@ -14,20 +14,25 @@ const filters = ["All", "Full Stack", "Frontend", "Backend"];
 
 const ITEMS_PER_PAGE = 6;
 
+
 export default function ProjectsPage() {
   const [selected, setSelected] = useState("All");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
   const filteredProjects = useMemo(() => {
+    const searchTerm = search.trim().toLowerCase();
+
     return projects.filter((project) => {
-      const category = selected === "All" || project.category === selected;
+      const matchesCategory =
+        selected === "All" ||
+        ("category" in project && project.category === selected);
 
-      const keyword =
-        project.title.toLowerCase().includes(search.toLowerCase()) ||
-        project.description.toLowerCase().includes(search.toLowerCase());
+      const matchesSearch =
+        project.title.toLowerCase().includes(searchTerm) ||
+        project.description.toLowerCase().includes(searchTerm);
 
-      return category && keyword;
+      return matchesCategory && matchesSearch;
     });
   }, [selected, search]);
 
@@ -41,15 +46,13 @@ export default function ProjectsPage() {
   return (
     <main className="relative min-h-screen overflow-hidden py-16">
       {/* Background */}
+      <div className="absolute top-0 left-0 h-72 w-72 rounded-full bg-primary/10 blur-[100px]" />
+      <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-cyan-500/10 blur-[100px]" />
 
-      <div className="absolute left-0 top-0 w-72 h-72 rounded-full bg-primary/10 blur-[100px]" />
-
-      <div className="absolute right-0 bottom-0 w-72 h-72 rounded-full bg-cyan-500/10 blur-[100px]" />
-
-      <div className="container relative max-w-7xl mx-auto px-12">
+      <div className="container relative mx-auto max-w-7xl px-6 lg:px-12">
         <ProjectsHeader />
 
-        <div className="mt-8 flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between">
+        <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <FilterTabs
             filters={filters}
             selected={selected}
@@ -70,7 +73,7 @@ export default function ProjectsPage() {
 
         <motion.div
           layout
-          className="grid mt-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+          className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
         >
           {currentProjects.map((project) => (
             <ProjectCard key={project.title} project={project} />
@@ -78,12 +81,14 @@ export default function ProjectsPage() {
         </motion.div>
 
         {currentProjects.length === 0 && (
-          <p className="text-center text-gray-400 text-sm mt-16">
+          <p className="mt-16 text-center text-sm text-gray-400">
             No projects match your search.
           </p>
         )}
 
-        <Pagination page={page} totalPages={totalPages} onChange={setPage} />
+        {totalPages > 1 && (
+          <Pagination page={page} totalPages={totalPages} onChange={setPage} />
+        )}
       </div>
     </main>
   );
