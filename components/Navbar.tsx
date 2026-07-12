@@ -1,23 +1,38 @@
-'use client'
-import Link from 'next/link'
-import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { useTheme } from '../context/ThemeContext'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+"use client";
+import Link from "next/link";
+import {
+  SunIcon,
+  MoonIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
+import { useTheme } from "@/context/ThemeContext";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+
+const RESUME_PATH = "/Neel_Samel_Full_Stack_Developer_Resume.pdf";
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen((prev) => !prev);
   };
 
+  // Lock body scroll while mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const menuItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/contact', label: 'Contact' },
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/projects", label: "Projects" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
@@ -31,9 +46,9 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
             {menuItems.map((item) => (
-              <Link 
+              <Link
                 key={item.href}
-                href={item.href} 
+                href={item.href}
                 className="hover:text-primary transition-colors"
               >
                 {item.label}
@@ -41,9 +56,10 @@ export default function Navbar() {
             ))}
 
             {/* Resume Button */}
-            <a 
-              href="/Neel_Samel_Resume.pdf" 
-              target="_blank" 
+
+            <a
+              href={RESUME_PATH}
+              target="_blank"
               rel="noopener noreferrer"
               className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors text-sm"
             >
@@ -53,11 +69,16 @@ export default function Navbar() {
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
+              aria-label={
+                theme === "dark"
+                  ? "Switch to light mode"
+                  : "Switch to dark mode"
+              }
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              {theme === 'dark' ? (
+              {theme === "dark" ? (
                 <SunIcon className="h-5 w-5" />
               ) : (
                 <MoonIcon className="h-5 w-5" />
@@ -69,6 +90,8 @@ export default function Navbar() {
           <motion.button
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -85,10 +108,10 @@ export default function Navbar() {
           {isMobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden"
+              className="md:hidden overflow-hidden"
             >
               <div className="py-4 space-y-4">
                 {menuItems.map((item, index) => (
@@ -115,7 +138,7 @@ export default function Navbar() {
                   transition={{ delay: menuItems.length * 0.1 }}
                 >
                   <a
-                    href="/resume.pdf"
+                    href={RESUME_PATH}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block py-2 text-sm bg-primary text-white rounded-md text-center mx-2 hover:bg-primary/90 transition-colors"
@@ -138,7 +161,7 @@ export default function Navbar() {
                     }}
                     className="flex items-center py-2 hover:text-primary transition-colors"
                   >
-                    {theme === 'dark' ? (
+                    {theme === "dark" ? (
                       <>
                         <SunIcon className="h-5 w-5 mr-2" />
                         Light Mode
@@ -157,5 +180,5 @@ export default function Navbar() {
         </AnimatePresence>
       </div>
     </nav>
-  )
+  );
 }

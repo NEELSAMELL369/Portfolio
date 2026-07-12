@@ -1,170 +1,221 @@
-'use client'
+"use client";
 
-import { FaCode, FaLaptopCode, FaGraduationCap } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 import {
-  fadeInUp,
-  fadeInDown,
-  fadeIn,
-  staggerContainer,
-  cardHover,
-  cardHoverSmall
-} from '@/utils/animations'
+  FaCode,
+  FaLaptopCode,
+  FaDatabase,
+  FaTools,
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaBriefcase,
+} from "react-icons/fa";
+import { fadeIn, fadeInDown, fadeInUp } from "@/utils/animations";
+
+const skills = [
+  { name: "React / Next.js", level: 90 },
+  { name: "JavaScript / TypeScript", level: 85 },
+  { name: "Node.js / Express.js", level: 82 },
+  { name: "Redux", level: 78 },
+  { name: "MongoDB / PostgreSQL", level: 78 },
+  { name: "Tailwind CSS", level: 88 },
+];
+
+const services = [
+  {
+    icon: <FaCode />,
+    title: "Frontend",
+    text: "Responsive, reusable UI with React.js, Next.js and Tailwind CSS.",
+  },
+  {
+    icon: <FaLaptopCode />,
+    title: "Backend",
+    text: "REST APIs, JWT auth and scalable services with Node.js and Express.js.",
+  },
+  {
+    icon: <FaDatabase />,
+    title: "Database",
+    text: "Data modeling with PostgreSQL, MongoDB and Prisma ORM.",
+  },
+  {
+    icon: <FaTools />,
+    title: "Tools",
+    text: "Git, GitHub, Postman and cloud deployment on Vercel and Render.",
+  },
+];
+
+const journey = [
+  {
+    title: "Bachelor of Science",
+    period: "Jun 2020 – Nov 2024",
+    place: "Dr. Babasaheb Ambedkar Marathwada University, Aurangabad",
+  },
+  {
+    title: "Full Stack Web Development",
+    period: "Jun 2024 – May 2025",
+    place: "Masai School, Bengaluru",
+  },
+  {
+    title: "Frontend Developer (React)",
+    period: "Dec 2025 – Present",
+    place: "The TFPL, Ahmedabad",
+  },
+];
+
+const stats = [
+  { value: "8+", title: "Months Experience" },
+  { value: "2+", title: "Full Stack Projects" },
+  { value: "2", title: "Dashboards in Production" },
+  { value: "100%", title: "Responsive" },
+];
 
 export default function About() {
   return (
-    <div className="container max-w-7xl mx-auto py-12">
-      <motion.h1
-        className="text-4xl font-bold mb-8 text-center"
-        {...fadeInDown}
-      >
-        About Me
-      </motion.h1>
+    <section className="relative py-16 overflow-hidden">
+      <div className="absolute left-0 top-0 w-72 h-72 bg-primary/10 blur-[100px] rounded-full" />
+      <div className="absolute right-0 bottom-0 w-72 h-72 bg-cyan-500/10 blur-[100px] rounded-full" />
 
-      {/* Bio Section */}
-      <motion.section
-        className="mb-16"
-        {...fadeInUp}
-      >
-        <p className="text-lg text-secondary max-w-3xl mx-auto text-center">
-          I&apos;m a passionate Full Stack Developer with expertise in building modern web applications.
-          With a strong foundation in both frontend and backend technologies, I create seamless
-          user experiences and robust server-side solutions.
-        </p>
-      </motion.section>
-
-      {/* Skills Section */}
-      <motion.section
-        className="mb-16"
-        {...fadeIn}
-        transition={{ delay: 0.2 }}
-      >
+      <div className="container max-w-7xl mx-auto px-6">
         <motion.h2
-          className="section-title"
-          {...fadeInUp}
+          {...fadeInDown}
+          className="text-3xl md:text-4xl font-bold text-center mb-12"
         >
-          Skills
+          About Me
         </motion.h2>
-        <motion.div
-          className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
+
+        <div className="grid lg:grid-cols-2 gap-5">
+          {/* LEFT */}
           <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            {...cardHover}
+            {...fadeInUp}
+            className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-md p-5 md:p-6"
           >
-            <FaCode className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Frontend</h3>
-            <ul className="text-secondary space-y-2">
-              <li>React / Next.js</li>
-              <li>TypeScript</li>
-              <li>Tailwind CSS</li>
+            <h3 className="text-lg font-semibold mb-3">Who am I?</h3>
 
-              <li>HTML5 / CSS3</li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            {...cardHover}
-          >
-            <FaLaptopCode className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Backend</h3>
-            <ul className="text-secondary space-y-2">
-              <li>Node.js</li>
-              <li>Express</li>
-              <li>PostgreSQL</li>
-              <li>MongoDB</li>
-            </ul>
-          </motion.div>
-
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            {...cardHover}
-          >
-            <FaGraduationCap className="h-8 w-8 text-primary mb-4" />
-            <h3 className="text-xl font-semibold mb-2">Tools & Others</h3>
-            <ul className="text-secondary space-y-2">
-              <li>Git / GitHub</li>
-              <li>Postman</li>
-
-            </ul>
-          </motion.div>
-        </motion.div>
-      </motion.section>
-
-      {/* Experience Section */}
-      <motion.section
-        className="mb-16"
-        {...fadeIn}
-        transition={{ delay: 0.4 }}
-      >
-        <motion.h2
-          className="section-title"
-          {...fadeInUp}
-        >
-          Experience
-        </motion.h2>
-        <motion.div
-          className="max-w-3xl mx-auto space-y-8"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            {...cardHoverSmall}
-          >
-            <h3 className="text-xl font-semibold mb-2">Assistant Head Teacher</h3>
-            <p className="text-primary mb-2">K.L Memorial High School • 2022-2025</p>
-            <ul className="text-secondary list-disc list-inside space-y-2">
-              <li><b>Curriculum & Teaching Support</b> – Oversaw curriculum completion and stepped in as a substitute teacher when needed.</li>
-              <li><b>Administrative & Financial Management</b> – Handled daily school operations and maintained accurate financial records.</li>
-              <li><b>Event Planning & Execution</b> – Organized and supervised school events, ensuring smooth and timely execution.</li>
-
-            </ul>
-          </motion.div>
-
-
-        </motion.div>
-      </motion.section>
-
-      {/* Education Section */}
-      <motion.section
-        {...fadeIn}
-        transition={{ delay: 0.6 }}
-      >
-        <motion.h2
-          className="section-title"
-          {...fadeInUp}
-        >
-          Education
-        </motion.h2>
-        <motion.div
-          className="max-w-3xl mx-auto"
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-        >
-          <motion.div
-            className="bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md"
-            variants={fadeInUp}
-            {...cardHoverSmall}
-          >
-            <h3 className="text-xl font-semibold mb-2">Bachelor of Science</h3>
-            <p className="text-primary mb-2">Dr. Babasaheb Ambedkar Marathwada University • 2020 - 2024</p>
-            <p className="text-secondary">
-              Graduated with honors. Gained a strong foundation in core science subjects, while independently developing skills in software development and web technologies.
+            <p className="text-gray-600 dark:text-gray-400 text-sm leading-6 mb-4">
+              Full Stack Developer with 8 months of professional experience
+              building React.js applications, now working across the full stack
+              with Node.js, Express.js, Next.js, Prisma, PostgreSQL, and
+              MongoDB. Skilled in JavaScript, TypeScript, Redux, and REST API
+              development, with a working knowledge of Java and Python.
+              Currently building 2 dashboards in production at The TFPL.
             </p>
+
+            <div className="space-y-2.5 text-sm">
+              <div className="flex gap-3 items-center">
+                <FaBriefcase className="text-primary text-sm" />
+                <span>Frontend Developer (React) at The TFPL</span>
+              </div>
+
+              <div className="flex gap-3 items-center">
+                <FaMapMarkerAlt className="text-primary text-sm" />
+                <span>Ahmedabad, Gujarat, India</span>
+              </div>
+
+              <div className="flex gap-3 items-center">
+                <FaEnvelope className="text-primary text-sm" />
+                <span>Open to new opportunities</span>
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
-      </motion.section>
-    </div>
-  )
-} 
+
+          {/* SKILLS */}
+          <motion.div
+            {...fadeIn}
+            className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-md p-5 md:p-6"
+          >
+            <h3 className="text-lg font-semibold mb-4">Skills</h3>
+
+            <div className="space-y-3">
+              {skills.map((skill) => (
+                <div key={skill.name}>
+                  <div className="flex justify-between mb-1 text-sm">
+                    <span className="text-gray-700 dark:text-gray-300">
+                      {skill.name}
+                    </span>
+                    <span className="text-gray-500 dark:text-gray-500">
+                      {skill.level}%
+                    </span>
+                  </div>
+
+                  <div className="h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8 }}
+                      className="h-full bg-primary rounded-full"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* SERVICES */}
+        <div className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+            What I Do
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {services.map((service) => (
+              <motion.div
+                whileHover={{ y: -4 }}
+                key={service.title}
+                className="rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-md p-5"
+              >
+                <div className="text-primary text-2xl mb-3">{service.icon}</div>
+
+                <h3 className="text-base font-semibold mb-2">
+                  {service.title}
+                </h3>
+
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-6">
+                  {service.text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* TIMELINE */}
+        <div className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+            My Journey
+          </h2>
+
+          <div className="relative border-l-2 border-primary/40 ml-4 max-w-2xl mx-auto">
+            {journey.map((item) => (
+              <div className="mb-8 ml-8 relative" key={item.title}>
+                <div className="absolute -left-[37px] top-1 w-3 h-3 rounded-full bg-primary" />
+
+                <h3 className="text-base font-semibold">{item.title}</h3>
+                <p className="text-primary text-sm">{item.period}</p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                  {item.place}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* STATS */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-16">
+          {stats.map((item) => (
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              key={item.title}
+              className="rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-md p-6 text-center"
+            >
+              <h2 className="text-3xl font-bold text-primary">{item.value}</h2>
+              <p className="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                {item.title}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

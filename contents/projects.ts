@@ -1,32 +1,64 @@
 import { Project } from "@/types";
 
-
 export const projects: Project[] = [
-    {
-        title: 'Task Manager App',
-        description: 'MERN task manager with JWT auth, roles, subtasks, file uploads, multi-user tasks, and dashboards.',
-        technologies: ["React", "Tailwind CSS", "React Router", "Moment.js", "Node.js", "Express.js", "MongoDB", "Mongoose", "React Context", "JWT", "bcrypt", "Multer", "Recharts", "Vercel", "Render"],
-        githubLink: 'https://github.com/NEELSAMEL23/Task_Manager',
-        demoLink: 'https://task-manager-dusky-nine.vercel.app/',
-       
-        image: '/images/task-managment.avif'
-    },
-    {
-        title: 'Portfolio Website',
-        description: 'Responsive portfolio using Next.js App Router, with contact API, animations, and modern reusable components.',
-        technologies: ['Next.js', 'React', 'Framer Motion', 'Heroicons', 'React Icons', 'Nodemailer', 'Dotenv'],
-        githubLink: 'https://github.com/NEELSAMEL23/Portfolio',
-        demoLink: 'https://portfolio-rdvb.vercel.app/',
-        image: '/images/portfolio.jpg'
+  {
+    id: 1,
+    featured: true,
+    category: "Full Stack",
 
-    },
-    {
-        title: 'Search Movies App',
-        description: 'Responsive Movies Gallery app with filtering, sorting, and pagination using HTML, Tailwind CSS, and JavaScript.',
-        technologies: ["HTML5","Tailwind CSS","JavaScript (ES6)","Firebase Realtime Database"],
-        githubLink: 'https://github.com/NEELSAMEL23/Movies_Gallery',
-        demoLink: 'https://neelsamel23.github.io/Movies_Gallery/',
-        image: '/images/movie.png'
-    },
+    title: "TakshaHub",
 
-];  
+    description:
+      "A modern school ERP platform with role-based dashboards for Admin, Teachers, Students, and Parents. Features authentication, attendance, exams, fee management, notices, and scalable architecture.",
+
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "Prisma",
+      "PostgreSQL",
+      "Redis",
+      "JWT",
+      "Tailwind CSS",
+    ],
+
+    mainTechnologies: ["Next.js", "Node.js", "PostgreSQL"],
+
+    githubLink: "https://github.com/NEELSAMEL19/TakshaHub",
+
+    demoLink: "https://takshahub.vercel.app/",
+
+    image: "/takshahub-card.jpg",
+  },
+
+  {
+    id: 2,
+    featured: true,
+    category: "Full Stack",
+
+    title: "Expense Tracker",
+
+    description:
+      "Track income and expenses with analytics, Cloudinary receipt uploads, authentication, Excel export, interactive charts, and a responsive dashboard.",
+
+    technologies: [
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT",
+      "Cloudinary",
+      "ExcelJS",
+    ],
+
+    mainTechnologies: ["React", "Node.js", "MongoDB"],
+
+    githubLink: "https://github.com/NEELSAMEL19/Expense_Tracker_MERN",
+
+    demoLink: "https://expense-tracker-one-delta-51.vercel.app/",
+
+    image: "/expense-tracker-card.jpg",
+  },
+];
