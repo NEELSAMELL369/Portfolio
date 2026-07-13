@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaCode } from "react-icons/fa";
-import { Rocket, ShieldCheck, Users, Download, ArrowRight } from "lucide-react";
+import { Rocket, ShieldCheck, Users, ArrowRight, Eye } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -42,8 +42,8 @@ export default function Hero() {
                 href="/Neel_Samel_Full_Stack_Developer_Resume.pdf"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm text-white transition hover:scale-105"
               >
-                <Download size={15} />
-                Download Resume
+                <Eye size={15} />
+                View Resume
               </Link>
 
               <Link
@@ -100,6 +100,7 @@ export default function Hero() {
                   alt="Neel Samel"
                   fill
                   priority
+                  sizes="224px"
                   className="object-cover"
                 />
               </div>
@@ -145,14 +146,17 @@ function Card({
   text: string;
 }) {
   return (
-    <div className="rounded-xl flex items-center justify-between gap-3.5 border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111827]/80 p-4 backdrop-blur transition hover:border-primary">
-      <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-lg text-primary">
+    <div className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white p-4 transition-all hover:border-primary hover:shadow-md dark:border-gray-700 dark:bg-[#111827]/80 backdrop-blur">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-lg text-primary">
         {icon}
       </div>
-      <div>
-        <h3 className="text-sm font-semibold mb-1">{title}</h3>
 
-        <p className="text-gray-600 dark:text-gray-400 text-xs leading-5">
+      <div className="min-w-0 flex-1">
+        <h3 className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">
+          {title}
+        </h3>
+
+        <p className="text-xs leading-5 text-gray-600 dark:text-gray-400">
           {text}
         </p>
       </div>

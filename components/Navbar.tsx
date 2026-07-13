@@ -9,6 +9,7 @@ import {
 import { useTheme } from "@/context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Download } from "lucide-react";
 
 const RESUME_PATH = "/Neel_Samel_Full_Stack_Developer_Resume.pdf";
 
@@ -59,11 +60,11 @@ export default function Navbar() {
 
             <a
               href={RESUME_PATH}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors text-sm"
+              download="Neel_Samel_Full_Stack_Developer_Resume.pdf"
+              className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm text-white transition-colors hover:bg-primary/90"
             >
-              Resume
+              <Download size={16} />
+              Download Resume
             </a>
 
             {/* Theme Toggle */}
